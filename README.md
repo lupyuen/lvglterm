@@ -2,7 +2,7 @@
 
 # LVGL Terminal for PinePhone on Apache NuttX RTOS
 
-LVGL Terminal is a Touchscreen App for PinePhone that lets us run commands in the NuttX NSH Shell...
+LVGL Terminal `lvglterm` is a Touchscreen App for PinePhone that lets us run commands in the NuttX NSH Shell...
 
 -   [Watch the Demo on YouTube](https://www.youtube.com/watch?v=WdiXaMK8cNw)
 
