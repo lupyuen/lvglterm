@@ -2,18 +2,24 @@
 
 # LVGL Terminal for PinePhone on Apache NuttX RTOS
 
-TODO
+To build LVGL Terminal...
 
-```bash
-pushd nuttx/apps/examples
-git submodule add https://github.com/lupyuen/lvglterm
-popd
+1.  Add `lvglterm` to our NuttX Project...
 
-pushd nuttx/nuttx
-make distclean
-tools/configure.sh pinephone:lvgl
-make menuconfig
-```
+    ```bash
+    pushd nuttx/apps/examples
+    git submodule add https://github.com/lupyuen/lvglterm
+    popd
+    ```
+
+1.  Configure our NuttX Project...
+
+    ```bash
+    pushd nuttx/nuttx
+    make distclean
+    tools/configure.sh pinephone:lvgl
+    make menuconfig
+    ```
 
 1.  In "RTOS Features > Tasks and Scheduling"
 
@@ -39,6 +45,8 @@ make menuconfig
 
 1.  Save configuration and exit `menuconfig`
 
-```bash
-make
-```
+1.  Build NuttX...
+
+    ```bash
+    make
+    ```

@@ -36,6 +36,8 @@
 #include <port/lv_port.h>
 #include <lvgl/demos/lv_demos.h>
 
+static void create_terminal(void);
+
 /****************************************************************************
  * Pre-processor Definitions
  ****************************************************************************/
@@ -220,8 +222,7 @@ int main(int argc, FAR char *argv[])
   lv_port_init();
 
   // Create an LVGL Terminal that will let us interact with NuttX NSH Shell
-  void test_terminal(void);
-  test_terminal();
+  create_terminal();
 
   /* LVGL demo creation */
 
@@ -272,8 +273,8 @@ static lv_obj_t *input;
 static lv_obj_t *output;
 
 // Create an LVGL Terminal that will let us interact with NuttX NSH Shell
-void test_terminal(void) {
-  _info("test_terminal\n");
+static void create_terminal(void) {
+  _info("create_terminal\n");
 
   // Create the pipes for NSH Shell
   int ret;
@@ -571,8 +572,8 @@ Starting kernel ...
 - Boot from EL2
 - Boot from EL1
 - Boot to C runtime for OS Initialize
-test_terminal: test_terminal
-test_terminal: pid=3
+create_terminal: create_terminal
+create_terminal: pid=3
 timer_callback: 
 NuttShell (NSH) NuttX-12.0.0
 nsh> 
