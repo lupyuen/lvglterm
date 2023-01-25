@@ -53,6 +53,8 @@ lvglterm.c.Users.Luppy.PinePhone.wip-nuttx.apps.examples.lvglterm.o: \
  /Users/Luppy/PinePhone/wip-nuttx/nuttx/include/debug.h \
  /Users/Luppy/PinePhone/wip-nuttx/nuttx/include/syslog.h \
  /Users/Luppy/PinePhone/wip-nuttx/nuttx/include/sys/uio.h \
+ /Users/Luppy/PinePhone/wip-nuttx/nuttx/include/poll.h \
+ /Users/Luppy/PinePhone/wip-nuttx/nuttx/include/sys/poll.h \
  /Users/Luppy/PinePhone/wip-nuttx/apps/graphics/lvgl/lvgl/lvgl.h \
  /Users/Luppy/PinePhone/wip-nuttx/apps/graphics/lvgl/lvgl/src/misc/lv_log.h \
  /Users/Luppy/PinePhone/wip-nuttx/apps/graphics/lvgl/lvgl/src/misc/../lv_conf_internal.h \
@@ -278,12 +280,6 @@ lvglterm.c.Users.Luppy.PinePhone.wip-nuttx.apps.examples.lvglterm.o: \
  /Users/Luppy/PinePhone/wip-nuttx/apps/graphics/lvgl/lvgl/src/extra/widgets/span/lv_span.h \
  /Users/Luppy/PinePhone/wip-nuttx/apps/graphics/lvgl/lvgl/src/extra/widgets/span/../../../lvgl.h \
  /Users/Luppy/PinePhone/wip-nuttx/apps/graphics/lvgl/port/lv_port.h \
- /Users/Luppy/PinePhone/wip-nuttx/apps/graphics/lvgl/lvgl/demos/lv_demos.h \
- /Users/Luppy/PinePhone/wip-nuttx/apps/graphics/lvgl/lvgl/demos/../lvgl.h \
- /Users/Luppy/PinePhone/wip-nuttx/apps/graphics/lvgl/lvgl/demos/widgets/lv_demo_widgets.h \
- /Users/Luppy/PinePhone/wip-nuttx/apps/graphics/lvgl/lvgl/demos/widgets/../lv_demos.h \
- /Users/Luppy/PinePhone/wip-nuttx/nuttx/include/poll.h \
- /Users/Luppy/PinePhone/wip-nuttx/nuttx/include/sys/poll.h \
  /Users/Luppy/PinePhone/wip-nuttx/apps/include/nshlib/nshlib.h \
  /Users/Luppy/PinePhone/wip-nuttx/nuttx/include/arpa/inet.h \
  /Users/Luppy/PinePhone/wip-nuttx/nuttx/include/netinet/in.h \

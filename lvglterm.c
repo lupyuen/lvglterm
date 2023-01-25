@@ -31,10 +31,10 @@
 #include <stdio.h>
 #include <time.h>
 #include <debug.h>
-
+#include <poll.h>
 #include <lvgl/lvgl.h>
 #include <port/lv_port.h>
-#include <lvgl/demos/lv_demos.h>
+#include "nshlib/nshlib.h"
 
 static void create_terminal(void);
 
@@ -60,100 +60,6 @@ static void create_terminal(void);
 #endif
 
 /****************************************************************************
- * Private Type Declarations
- ****************************************************************************/
-
-typedef CODE void (*demo_create_func_t)(void);
-
-struct func_key_pair_s
-{
-  FAR const char *name;
-  demo_create_func_t func;
-};
-
-/****************************************************************************
- * Private Data
- ****************************************************************************/
-
-static const struct func_key_pair_s func_key_pair[] =
-{
-#ifdef CONFIG_LV_USE_DEMO_WIDGETS
-  { "widgets",        lv_demo_widgets        },
-#endif
-
-#ifdef CONFIG_LV_USE_DEMO_KEYPAD_AND_ENCODER
-  { "keypad_encoder", lv_demo_keypad_encoder },
-#endif
-
-#ifdef CONFIG_LV_USE_DEMO_BENCHMARK
-  { "benchmark",      lv_demo_benchmark      },
-#endif
-
-#ifdef CONFIG_LV_USE_DEMO_STRESS
-  { "stress",         lv_demo_stress         },
-#endif
-
-#ifdef CONFIG_LV_USE_DEMO_MUSIC
-  { "music",          lv_demo_music          },
-#endif
-  { "", NULL }
-};
-
-/****************************************************************************
- * Private Functions
- ****************************************************************************/
-
-/****************************************************************************
- * Name: show_usage
- ****************************************************************************/
-
-static void show_usage(void)
-{
-  int i;
-  const int len = sizeof(func_key_pair)
-                  / sizeof(struct func_key_pair_s) - 1;
-
-  if (len == 0)
-    {
-      printf("lvglterm: no demo available!\n");
-      exit(EXIT_FAILURE);
-      return;
-    }
-
-  printf("\nUsage: lvglterm demo_name\n");
-  printf("\ndemo_name:\n");
-
-  for (i = 0; i < len; i++)
-    {
-      printf("  %s\n", func_key_pair[i].name);
-    }
-
-  exit(EXIT_FAILURE);
-}
-
-/****************************************************************************
- * Name: find_demo_create_func
- ****************************************************************************/
-
-static demo_create_func_t find_demo_create_func(FAR const char *name)
-{
-  int i;
-  const int len = sizeof(func_key_pair)
-                  / sizeof(struct func_key_pair_s) - 1;
-
-  for (i = 0; i < len; i++)
-    {
-      if (strcmp(name, func_key_pair[i].name) == 0)
-        {
-          return func_key_pair[i].func;
-        }
-    }
-
-  printf("lvglterm: '%s' not found.\n", name);
-  return NULL;
-}
-
-/****************************************************************************
  * Public Functions
  ****************************************************************************/
 
@@ -172,35 +78,6 @@ static demo_create_func_t find_demo_create_func(FAR const char *name)
 
 int main(int argc, FAR char *argv[])
 {
-  demo_create_func_t demo_create_func;
-  FAR const char *demo = NULL;
-  const int func_key_pair_len = sizeof(func_key_pair) /
-                                sizeof(func_key_pair[0]);
-
-  /* If no arguments are specified and only 1 demo exists, select the demo */
-
-  if (argc == 1 && func_key_pair_len == 2)  /* 2 because of NULL sentinel */
-    {
-      demo = func_key_pair[0].name;
-    }
-  else if (argc != 2)
-    {
-      show_usage();
-      return EXIT_FAILURE;
-    }
-  else
-    {
-      demo = argv[1];
-    }
-
-  demo_create_func = find_demo_create_func(demo);
-
-  if (demo_create_func == NULL)
-    {
-      show_usage();
-      return EXIT_FAILURE;
-    }
-
 #ifdef NEED_BOARDINIT
   /* Perform board-specific driver initialization */
 
@@ -221,12 +98,9 @@ int main(int argc, FAR char *argv[])
 
   lv_port_init();
 
-  // Create an LVGL Terminal that will let us interact with NuttX NSH Shell
+  /* Create an LVGL Terminal that will let us interact with NuttX NSH Shell */
+
   create_terminal();
-
-  /* LVGL demo creation */
-
-  ////demo_create_func();
 
   /* Handle LVGL tasks */
 
@@ -244,15 +118,13 @@ int main(int argc, FAR char *argv[])
   return EXIT_SUCCESS;
 }
 
-//////////////////////////////////////////////////////////////////////////
-// LVGL Terminal
+/****************************************************************************
+ * Private Functions
+ ****************************************************************************/
 
 #ifndef CONFIG_DEV_PIPE_SIZE
 #error Please enable "Device Drivers > FIFO and named pipe drivers" in menuconfig
 #endif
-
-#include <poll.h>
-#include "nshlib/nshlib.h"
 
 static bool has_input(int fd);
 static void timer_callback(lv_timer_t * timer);
