@@ -1,2 +1,3 @@
-# lvglterm
-LVGL Terminal for PinePhone on Apache NuttX RTOS
+# LVGL Terminal for PinePhone on Apache NuttX RTOS
+
+TODO
