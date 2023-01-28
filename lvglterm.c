@@ -140,7 +140,7 @@ static int nsh_stderr[2];
 #define READ_PIPE  0  // Read Pipes: stdin, stdout, stderr
 #define WRITE_PIPE 1  // Write Pipes: stdin, stdout, stderr
 
-// LVGL Text Areas for NSH Input and Output
+// LVGL Text Area Widgets for NSH Input and Output
 static lv_obj_t *input;
 static lv_obj_t *output;
 
