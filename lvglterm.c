@@ -374,7 +374,7 @@ static bool has_input(int fd) {
     return false;
 
   } else if (ret == 0) {
-    // Timeout means nothing to read
+    // If Timeout, report No Input
     // _info("timeout: fd=%d\n", fd);
     return false;
 
