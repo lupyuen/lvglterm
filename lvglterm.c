@@ -168,8 +168,8 @@ static void create_terminal(void) {
   char *argv[] = { NULL };
   pid_t pid = task_create(
     "NSH Console",
-    100,  // Priority
-    CONFIG_DEFAULT_TASK_STACKSIZE,
+    CONFIG_EXAMPLES_LVGLTERM_PRIORITY,
+    CONFIG_EXAMPLES_LVGLTERM_STACKSIZE,
     nsh_consolemain,
     argv
   );
