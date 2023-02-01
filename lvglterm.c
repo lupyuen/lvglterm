@@ -356,9 +356,9 @@ static bool has_input(int fd) {
   fdp.fd = fd;
   fdp.events = POLLIN;
   int ret = poll(
-    (struct pollfd *)&fdp,  // File Descriptors
-    1,  // Number of File Descriptors
-    0   // Poll Timeout (Milliseconds)
+    &fdp,  // File Descriptors
+    1,     // Number of File Descriptors
+    0      // Poll Timeout (Milliseconds)
   );
 
   if (ret > 0) {
