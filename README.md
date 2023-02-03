@@ -39,6 +39,10 @@ To build LVGL Terminal...
 
     Enable "FIFO and named pipe drivers"
 
+1.  In "Library Routines > Program Execution Options"
+
+    Enable "exec[l|v] / posix_spawn() Support"
+
 1.  In "Application Configuration > Examples"
 
     Enable "LVGL Terminal"
