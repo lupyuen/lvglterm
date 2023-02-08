@@ -10,15 +10,7 @@ LVGL Terminal `lvglterm` is a Touchscreen App for PinePhone that lets us run com
 
 ![Flow of LVGL Terminal for PinePhone on Apache NuttX RTOS](https://lupyuen.github.io/images/terminal-flow.jpg)
 
-To build LVGL Terminal...
-
-1.  Add `lvglterm` to our NuttX Project...
-
-    ```bash
-    pushd nuttx/apps/examples
-    git submodule add https://github.com/lupyuen/lvglterm
-    popd
-    ```
+LVGL Terminal is now in Mainline NuttX. To build LVGL Terminal...
 
 1.  Configure our NuttX Project...
 
