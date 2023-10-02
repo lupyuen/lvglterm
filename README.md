@@ -94,6 +94,6 @@ LVGL Terminal is now in Mainline NuttX. To build LVGL Terminal...
 
     ```bash
     $ aarch64-none-elf-objdump -t -S nuttx/apps/graphics/lvgl/lv_font_unscii_16.c.*.apps.graphics.lvgl.o
-    SYMBOL TABLE:
-    0000000000000000 l    df *ABS*	0000000000000000 lv_font_unscii_16.c
+    ...
+    0000000000000000 g     O .rodata.lv_font_unscii_16	0000000000000030 lv_font_unscii_16
     ```
